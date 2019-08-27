@@ -1,4 +1,7 @@
-<h1>Hello World</h1>
-<p>This is my first Rails App!</p>
-<%= @hello %>
+<h1>Crypto Portfolio app</h1>
+<p>Current crypto prices:</p>
+<br><br>
 
+<% @coins.each do |coin| %>
+  <%= coin["symbol"] %>: $<%= coin["price_usd"] %><br><br>
+<% end %>
