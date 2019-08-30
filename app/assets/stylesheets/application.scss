@@ -1,2 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.email {
+  margin: 5px 10px;
+}
+
+.password {
+  margin: 5px 10px;
+}
+
+.remember {
+  padding-left: 40px;
+}
+
+.button {
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
