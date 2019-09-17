@@ -1,0 +1,84 @@
+
+
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @crypto_name %></h3>
+  </div>
+
+  <div class="panel-body">
+
+      <p>
+        <strong>Symbol:</strong>
+        <%= @crypto.symbol.upcase %>
+      </p>
+
+      <p>
+        <strong>CoinMarketCap Ranking:</strong>
+        <%= @crypto_rank %>
+      </p>
+
+      <p>
+        <strong>Current Price USD (per unit):</strong>
+          <%= number_to_currency(@crypto_price) %>
+      </p>
+
+      <p>
+        <strong>Current Price BTC (per unit):</strong>
+        <%= @crypto_price_btc %>
+      </p>
+
+      <p>
+        <strong>24hr Trading Volume:</strong>
+          <%= number_to_currency(@crypto_24h_volume) %>
+      </p>
+
+      <p>
+        <strong>1hr Change:</strong>
+          <%= @crypto_1h %>%
+      </p>
+
+      <p>
+        <strong>24hr Change:</strong>
+          <%= @crypto_24h %>%
+      </p>
+
+      <p>
+        <strong>7 Day Change:</strong>
+          <%= @crypto_7d %>%
+      </p>
+
+      <p>
+        <strong>Market Cap:</strong>
+          <%= number_to_currency(@crypto_market_cap) %>
+      </p>
+
+      <p>
+        <strong>Available Supply:</strong>
+        <%= @crypto_available_supply %> <%= @crypto.symbol.upcase %>
+      </p>
+
+      <p>
+        <strong>Max Supply:</strong>
+        <%= @crypto_max_supply %> <%= @crypto.symbol.upcase %>
+      </p>
+
+      <p>
+        <strong>Purchased at:</strong>
+        <%= number_to_currency(@crypto.cost_per) %>
+      </p>
+
+      <p>
+        <strong>Amount owned:</strong>
+        <%= @crypto.amount_owned %>
+      </p>
+
+  </div>
+
+  <div class="panel-footer">
+    <%= link_to 'Edit', edit_crypto_path(@crypto) %> |
+    <%= link_to 'Delete', @crypto, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Back', cryptos_path %>
+  </div>
+
+</div>

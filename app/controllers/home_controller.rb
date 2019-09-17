@@ -26,7 +26,7 @@ class HomeController < ApplicationController
       end
       for coin in @coins
         if @symbol == "#{coin['symbol']}"
-          @symbol = "#{coin['name']} - Current Price: #{coin['price_usd']}"
+          @symbol = "#{coin['name']} - Current Price: $#{coin['price_usd']}"
         # elsif @symbol != "#{coin['symbol']}"
         #   @symbol = "Sorry, could not retrieve records for your search. Please try again."
         end

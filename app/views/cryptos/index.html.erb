@@ -1,0 +1,52 @@
+<% total_portfolio = 0 %>
+<h1>Cryptos</h1>
+<br>
+<table class="table table-striped table-bordered table-responsive table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Current Value (per unit)</th>
+      <th>Purchased at (per unit)</th>
+      <th>Quantity owned</th>
+      <th>Total Amount Invested</th>
+      <th>Current Investment Value</th>
+      <th>Profit/Loss If Sold Now</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cryptos.each do |crypto| %>
+      <% if crypto.user_id == current_user.id %>
+        <% if crypto.symbol %>
+          <% crypto.symbol = crypto.symbol.upcase %>
+        <% end %>
+        <tr>
+        <% for coin in @my_crypto %>
+           <% if crypto.symbol == coin['symbol'] %>
+              <td><%= link_to coin['name'], crypto %></td>
+              <td>$<%= coin['price_usd'] %></td>
+              <td>$<%= crypto.cost_per %></td>
+              <td><%= crypto.amount_owned %></td>
+              <% @total_amount_invested = (crypto.cost_per * crypto.amount_owned) %>
+              <td><%= number_to_currency(@total_amount_invested) %></td>
+              <% @current_investment_value = (crypto.amount_owned.to_d * coin['price_usd'].to_d) %>
+              <td><%= number_to_currency(@current_investment_value) %></td>
+              <td><%= number_to_currency(@current_investment_value - @total_amount_invested) %></td>
+              <% total_portfolio += (@current_investment_value - @total_amount_invested) %>
+<!--           # elsif @crypto != "#{coin['symbol']}"
+          #   @crypto  = "Sorry, could not retrieve records for your search. Please try again." -->
+          <% end %>
+        <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<% profit_or_loss = "loss" %>
+<% if total_portfolio > 0 %>
+  <% profit_or_loss = "profit" %>
+<% end %>
+<h3>Your portfolio has an overall <em><u><%= profit_or_loss %></u></em> of <%= number_to_currency(total_portfolio) %>.</h3>
+<br>
+<%= link_to 'New Crypto', new_crypto_path, class: "btn btn-primary"%>
