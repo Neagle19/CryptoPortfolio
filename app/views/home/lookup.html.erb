@@ -10,11 +10,10 @@
 <% @symbol = params[:sym] %>
 <% if @symbol %>
   <% @symbol = @symbol.upcase %>
-  <% if (@symbol == "") || (@all_symbols.exclude? @symbol) %>
-    <%= "Error: Please enter a valid cryptocurrency symbol such as 'BTC', 'ETH' etc." %>
-  <% end %>
   <% if @symbol == "AMB" %>
     <%= "I suggest you revise your investment strategy" %>
+  <% elsif (@symbol == "") || (@all_symbols.exclude? @symbol) %>
+    <%= "Error: Please enter a valid cryptocurrency symbol such as 'BTC', 'ETH' etc." %>
   <% end %>
   <% for coin in @coins %>
     <% if @symbol == "#{coin['symbol']}" %>
