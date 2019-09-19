@@ -4,13 +4,13 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :symbol %>
-    <%= f.number_field :user_id, value: current_user.id , type: "hidden" %>
-    <%= f.input :cost_per %>
-    <%= f.input :amount_owned %>
+    <%= f.input :symbol, :input_html => { :class => "symbol" } %>
+    <%= f.number_field :user_id, value: current_user.id , type: "hidden", :input_html => { :class => "symbol" } %>
+    <%= f.input :cost_per, type: Integer, :input_html => { :class => "symbol" } %>
+    <%= f.input :amount_owned, :input_html => { :class => "symbol" } %>
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions" style="margin-top: 15px; margin-bottom: 5px;">
     <%= f.button :submit, class: "btn btn-primary" %>
   </div>
 <% end %>

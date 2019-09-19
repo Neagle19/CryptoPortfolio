@@ -18,29 +18,9 @@ class HomeController < ApplicationController
   @uri = URI(@url)
   @response = Net::HTTP.get(@uri)
   @coins = JSON.parse(@response)
-  @symbol = params[:sym]
-    if @symbol
-      @symbol = @symbol.upcase
-      if @symbol == "AMB"
-        @symbol = "I suggest you revise your investment strategy"
-      end
-      for coin in @coins
-        if @symbol == "#{coin['symbol']}"
-          @symbol = "#{coin['name']} - Current Price: $#{coin['price_usd']}"
-        # elsif @symbol != "#{coin['symbol']}"
-        #   @symbol = "Sorry, could not retrieve records for your search. Please try again."
-        end
-      end
-    end
-    # @list_of_symbols.each do |sym|
-    #   if @symbol
-    #     @symbol.upcase
-    #     @coins.each do |coin|
-    if @symbol == ""
-      @symbol = "Error: Please enter a valid cryptocurrency symbol such as 'BTC', 'ETH' etc."
-    end
-    if @symbol != nil && @symbol.length > 5
-      @symbol = "Error: Please enter a valid cryptocurrency symbol such as 'BTC', 'ETH' etc."
+  @all_symbols = []
+    for x in @coins
+      @all_symbols << x['symbol']
     end
   end
 end
