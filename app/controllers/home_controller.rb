@@ -39,6 +39,9 @@ class HomeController < ApplicationController
     if @symbol == ""
       @symbol = "Error: Please enter a valid cryptocurrency symbol such as 'BTC', 'ETH' etc."
     end
+    if @symbol != nil && @symbol.length > 5
+      @symbol = "Error: Please enter a valid cryptocurrency symbol such as 'BTC', 'ETH' etc."
+    end
   end
 end
 

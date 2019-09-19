@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CryptoPortfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Crypto Portfolio</title>
+
+    <meta name="description" content="Track your cryptocurrencies with ease.">
+    <meta property="og:title" content="My Crypto Portfolio">
+    <meta property="og:image" content="<%= asset_path('crypto.jpeg')%>">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Track your cryptocurrencies with ease.">
+    <meta property="og:site_name" content="My Crypto Portfolio">
+    <meta property="og:url" content="<%= request.original_url %>" >
+    <%= favicon_link_tag asset_path('icons8-bitcoin-16.png') %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
