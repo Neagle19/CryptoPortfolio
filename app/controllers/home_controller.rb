@@ -19,8 +19,10 @@ class HomeController < ApplicationController
   @response = Net::HTTP.get(@uri)
   @coins = JSON.parse(@response)
   @all_symbols = []
+  @all_names = []
     for x in @coins
       @all_symbols << x['symbol']
+      @all_names << x['name']
     end
   end
 end
