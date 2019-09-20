@@ -13,7 +13,7 @@
     <%= "I suggest you revise your investment strategy" %>
   <% elsif (@symbol == "") || ((@all_symbols.exclude? @symbol.upcase) && (@all_names.exclude? @symbol.capitalize)) %>
     <div class="error">
-    <%= "Error: Please enter a valid cryptocurrency symbol such as 'BTC', 'ETH' etc." %>
+    <%= "Error: Please enter a valid cryptocurrency name or symbol ('BTC', 'Bitcoin', etc.)." %>
     </div>
   <% end %>
   <% for coin in @coins %>
